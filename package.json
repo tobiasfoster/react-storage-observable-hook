@@ -1,7 +1,9 @@
 {
   "name": "@hyperion-dev/react-storage-observable-hook",
-  "private": true,
-  "version": "0.0.1-beta",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.2-beta",
   "type": "module",
   "main": "./dist/useLocalStorageObservable.umd.cjs",
   "module": "./dist/useLocalStorageObservable.js",

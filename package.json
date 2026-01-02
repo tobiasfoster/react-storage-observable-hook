@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.2-beta",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/useLocalStorageObservable.umd.cjs",
   "module": "./dist/useLocalStorageObservable.js",

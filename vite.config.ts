@@ -22,9 +22,9 @@ export default defineConfig({
     copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, "src/lib/index.ts"),
-      name: "useLocalStorageObservable",
-      fileName: "useLocalStorageObservable",
-      formats: ["es", "umd"],
+      name: "react-storage-observable-hook",
+      fileName: "index",
+      formats: ["es"],
     },
     rollupOptions: {
       external: ["react", "react-dom"],

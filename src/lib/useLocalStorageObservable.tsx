@@ -9,6 +9,7 @@ export type CustomEventPayload = {
 export type CustomEventData = (data: Event & CustomEventPayload) => void;
 
 const SET_ITEM_EVENT_NAME = "INTERNAL_SET_ITEM_EVENT_DO_NOT_USE_DIRECTLY";
+const CLEAR_EVENT_NAME = "INTERNAL_CLEAR_EVENT_DO_NOT_USE_DIRECTLY";
 
 class CustomEventListener {
   element: EventTarget;
@@ -64,6 +65,12 @@ export default function useLocalStorageObservable() {
               target.setItem(key, value);
             };
           }
+          if (prop === "clear") {
+            return () => {
+              customEventListener.emit(CLEAR_EVENT_NAME);
+              target.clear();
+            };
+          }
           const value = target[prop as keyof typeof target];
           return typeof value === "function" ? value.bind(target) : value;
         },
@@ -87,9 +94,18 @@ export default function useLocalStorageObservable() {
     );
   }
 
+  function onClear(callback: () => void) {
+    customEventListener.on.call(
+      customEventListener,
+      CLEAR_EVENT_NAME,
+      callback,
+    );
+  }
+
   return {
     on,
     off,
+    onClear,
     observableLocalStorage,
   };
 }

@@ -2,7 +2,8 @@ import "./App.css";
 import useLocalStorageObservable from "./lib/useLocalStorageObservable";
 
 function App() {
-  const { on, off, observableLocalStorage } = useLocalStorageObservable();
+  const { on, off, observableLocalStorage, onClear } =
+    useLocalStorageObservable();
 
   return (
     <>
@@ -21,12 +22,10 @@ function App() {
       <button onClick={() => observableLocalStorage.setItem("test", "4")}>
         Set Item
       </button>
-      <button>Get Item</button>
-      <button>Remove Item</button>
-      <button>Clear</button>
-      <button>Key</button>
-      <button>Length</button>
-      <button>Item</button>
+      <button onClick={() => onClear(() => console.log("cleared"))}>
+        Subscribe to clear
+      </button>
+      <button onClick={() => observableLocalStorage.clear()}>Clear</button>
     </>
   );
 }

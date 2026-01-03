@@ -1,5 +1,11 @@
 # @hyperion-dev/react-storage-observable-hook
 
+## 0.1.4
+
+### Patch Changes
+
+- 98b8d81: readd log
+
 ## 0.1.3
 
 ### Patch Changes

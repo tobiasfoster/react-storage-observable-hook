@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 export type CustomEventPayload = {
   detail: {
     key: string;
@@ -53,35 +51,29 @@ export default function useLocalStorageObservable() {
     );
   }
 
-  const customEventListener = useMemo(() => new CustomEventListener(), []);
-  const localStorage = useMemo(() => window.localStorage, []);
+  const customEventListener = new CustomEventListener();
+  const localStorage = window.localStorage;
 
-  console.log(customEventListener);
-
-  const observableLocalStorage = useMemo(
-    () =>
-      new Proxy(localStorage, {
-        get(target, prop) {
-          if (prop === "setItem") {
-            return (key: string, value: string) => {
-              customEventListener.emit(SET_ITEM_EVENT_NAME, {
-                detail: { key, value },
-              });
-              target.setItem(key, value);
-            };
-          }
-          if (prop === "clear") {
-            return () => {
-              customEventListener.emit(CLEAR_EVENT_NAME);
-              target.clear();
-            };
-          }
-          const value = target[prop as keyof typeof target];
-          return typeof value === "function" ? value.bind(target) : value;
-        },
-      }),
-    [customEventListener, localStorage],
-  );
+  const observableLocalStorage = new Proxy(localStorage, {
+    get(target, prop) {
+      if (prop === "setItem") {
+        return (key: string, value: string) => {
+          customEventListener.emit(SET_ITEM_EVENT_NAME, {
+            detail: { key, value },
+          });
+          target.setItem(key, value);
+        };
+      }
+      if (prop === "clear") {
+        return () => {
+          customEventListener.emit(CLEAR_EVENT_NAME);
+          target.clear();
+        };
+      }
+      const value = target[prop as keyof typeof target];
+      return typeof value === "function" ? value.bind(target) : value;
+    },
+  });
 
   function on(callback: CustomEventData) {
     customEventListener.on.call(

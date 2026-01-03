@@ -56,6 +56,8 @@ export default function useLocalStorageObservable() {
   const customEventListener = useMemo(() => new CustomEventListener(), []);
   const localStorage = useMemo(() => window.localStorage, []);
 
+  console.log(customEventListener);
+
   const observableLocalStorage = useMemo(
     () =>
       new Proxy(localStorage, {

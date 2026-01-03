@@ -28,7 +28,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "release": "npm run build && changeset publish"
   },
   "dependencies": {
     "react": "^19.2.0",

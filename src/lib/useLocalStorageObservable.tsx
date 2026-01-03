@@ -13,6 +13,9 @@ const CLEAR_EVENT_NAME = "INTERNAL_CLEAR_EVENT_DO_NOT_USE_DIRECTLY";
 
 class CustomEventListener {
   element: EventTarget;
+  /**
+   * @internal Single listener currently
+   */
   listeners: Map<string, CustomEventData | null>;
   constructor() {
     this.element = new EventTarget();

@@ -3,6 +3,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tobiasfoster/react-storage-observable-hook"
+  },
   "version": "0.1.2",
   "type": "module",
   "main": "./dist/index.js",

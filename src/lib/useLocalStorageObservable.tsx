@@ -78,6 +78,8 @@ export default function useLocalStorageObservable() {
     [customEventListener, localStorage],
   );
 
+  console.log(observableLocalStorage);
+
   function on(callback: CustomEventData) {
     customEventListener.on.call(
       customEventListener,

@@ -1,5 +1,11 @@
 # @hyperion-dev/react-storage-observable-hook
 
+## 0.1.3
+
+### Patch Changes
+
+- a7bfd19: add jsdoc
+
 ## 0.1.2
 
 ### Patch Changes

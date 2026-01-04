@@ -12,7 +12,7 @@ export default defineConfig({
       },
     }),
     dts({
-      tsconfigPath: "./tsconfig.app.json",
+      tsconfigPath: "./tsconfig.lib.json",
       insertTypesEntry: true,
       rollupTypes: true,
       include: ["src/lib"],

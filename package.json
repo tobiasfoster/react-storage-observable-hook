@@ -31,7 +31,7 @@
     "version-packages": "changeset version",
     "release": "npm run build && changeset publish"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -51,6 +51,9 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+
   }
 }
